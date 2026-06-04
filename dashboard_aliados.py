@@ -154,7 +154,14 @@ with col_f1:
     selected_canal = st.multiselect("Canal:", options=canal_opts, placeholder="Todos", key="g_canal")
 with col_f2:
     ger_col = next((c for c in data_promos.columns if c.lower() == "gerencia"), None)
-    ger_opts = sorted(data_promos[ger_col].dropna().unique().tolist()) if ger_col else []
+    if ger_col:
+        pattern = "|".join(GERENCIAS_SUR_KEYWORDS)
+        ger_opts = sorted(
+            data_promos[ger_col][data_promos[ger_col].str.contains(pattern, case=False, na=False)]
+            .dropna().unique().tolist()
+        )
+    else:
+        ger_opts = []
     selected_ger = st.multiselect("Gerencia:", options=ger_opts, placeholder="Todas", key="g_ger")
 
 st.divider()
