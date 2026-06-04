@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-SAVE_DIR  = r"C:\Users\LENOVO\Desktop\Analisis\SCRIPTS PYTHON\Aliados"
+SAVE_DIR  = Path(__file__).parent
 FOTOS_DIR = Path(r"C:\Users\LENOVO\OneDrive - Anheuser-Busch InBev\Escritorio\Analisis\LICS Y LDACS\fotos")
 
 # ── Helpers de imagen ─────────────────────────────────────────────────────────
@@ -35,13 +35,13 @@ def img_b64(filename: str, max_h: int = 120) -> str:
         return ""
 
 def _pkl_mtime(*names):
-    return tuple(os.path.getmtime(os.path.join(SAVE_DIR, n)) for n in names)
+    return tuple((SAVE_DIR / n).stat().st_mtime for n in names)
 
 @st.cache_data
 def load_data(mtimes):
-    data_promos  = pd.read_pickle(os.path.join(SAVE_DIR, "data_promos.pkl"))
-    grid_maestro = pd.read_pickle(os.path.join(SAVE_DIR, "grid_maestro.pkl"))
-    grid_melt    = pd.read_pickle(os.path.join(SAVE_DIR, "grid_melt.pkl"))
+    data_promos  = pd.read_pickle(SAVE_DIR / "data_promos.pkl")
+    grid_maestro = pd.read_pickle(SAVE_DIR / "grid_maestro.pkl")
+    grid_melt    = pd.read_pickle(SAVE_DIR / "grid_melt.pkl")
     return data_promos, grid_maestro, grid_melt
 
 data_promos, grid_maestro, grid_melt = load_data(
