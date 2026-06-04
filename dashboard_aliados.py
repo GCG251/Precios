@@ -130,8 +130,8 @@ if banner_parts:
 # ── Título ────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="text-align:center; padding: 6px 0 10px;">
-    <span style="font-size:1.6rem; font-weight:800; letter-spacing:0.04em;">
-        Detalle de Precios — Plan Aliados
+    <span style="font-size:1.9rem; font-weight:900; letter-spacing:0.05em; color:#F6C842;">
+        Dashboard Precios Aliados y DSD
     </span>
 </div>
 """, unsafe_allow_html=True)
@@ -146,6 +146,10 @@ with col_c:
         placeholder="Buscar BrandPack...",
         key="bp"
     )
+
+GERENCIAS_SUR_KEYWORDS = ["Arequipa", "Ayacucho", "Cusco", "Puno", "Sur Chico", "Tacna"]
+DEAL_CONDITION = ["Relatividad", "Linealidad", "Táctico", "Tactico"]
+NOTA_CREDITO   = ["Rebate", "Challenge", "Rebate Corona", "Rebate SS"]
 
 # ── Filtros globales Canal y Gerencia ─────────────────────────────────────────
 _, col_f1, col_f2, _ = st.columns([1, 1, 1, 1])
@@ -190,10 +194,6 @@ def find_col(df, *names):
         if n in df.columns: return n
         if n.lower().strip() in low: return low[n.lower().strip()]
     return None
-
-GERENCIAS_SUR_KEYWORDS = ["Arequipa", "Ayacucho", "Cusco", "Puno", "Sur Chico", "Tacna"]
-DEAL_CONDITION = ["Relatividad", "Linealidad", "Táctico", "Tactico"]
-NOTA_CREDITO   = ["Rebate", "Challenge", "Rebate Corona", "Rebate SS"]
 
 ev_promos      = None
 ev_aliados     = None
