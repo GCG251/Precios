@@ -129,10 +129,14 @@ if banner_parts:
 
 # ── Título ────────────────────────────────────────────────────────────────────
 st.markdown("""
-<div style="text-align:center; padding: 6px 0 10px;">
-    <span style="font-size:1.9rem; font-weight:900; letter-spacing:0.05em; color:#F6C842;">
-        Dashboard Precios Aliados y DSD
-    </span>
+<div style="text-align:center; padding:18px 0 14px;
+    background:linear-gradient(90deg,#0a1628,#1B3A6B,#0a1628);
+    border-radius:10px; margin-bottom:14px;">
+    <div style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;
+        color:#F6C842; opacity:0.8; margin-bottom:4px;">Anheuser-Busch InBev · Sur Perú</div>
+    <div style="font-size:2.2rem; font-weight:900; letter-spacing:0.06em; color:#ffffff;">
+        Dashboard Precios <span style="color:#F6C842;">Aliados y DSD</span>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 # ── Segmentador BrandPack centrado ───────────────────────────────────────────
