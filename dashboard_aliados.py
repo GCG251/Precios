@@ -62,6 +62,12 @@ st.markdown("""
 .block-container { padding-top: 0.8rem; }
 .main-bg { background: #0d1117; }
 
+/* Tablas más compactas */
+[data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
+    font-size: 0.72rem !important;
+    padding: 2px 6px !important;
+}
+
 /* Banner de productos */
 .brand-strip {
     display: flex; gap: 10px; align-items: center;
@@ -247,7 +253,7 @@ with col_promos:
         agg = agg.rename(columns=rename_map)
 
         show_cols = [c for c in ["Gerencia", "brandpack", "listado", "Dsct S/.", "PTR FINAL"] if c in agg.columns]
-        promos_display = agg[show_cols].reset_index(drop=True)
+        promos_display = agg[show_cols].sort_values("PTR FINAL").reset_index(drop=True)
 
         ev_promos = st.dataframe(
             promos_display,
