@@ -2,5 +2,6 @@
 update_cell6.py
 fix_encoding.py
 nb_backup.json
+PUSH_GITHUB.bat
 __pycache__/
 *.pyc
