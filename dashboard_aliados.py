@@ -246,7 +246,7 @@ with col_promos:
         if c_list: rename_map[c_list] = "listado"
         agg = agg.rename(columns=rename_map)
 
-        show_cols = [c for c in ["brandpack", "listado", "Dsct S/.", "PTR FINAL"] if c in agg.columns]
+        show_cols = [c for c in ["Gerencia", "brandpack", "listado", "Dsct S/.", "PTR FINAL"] if c in agg.columns]
         promos_display = agg[show_cols].reset_index(drop=True)
 
         ev_promos = st.dataframe(
@@ -256,8 +256,11 @@ with col_promos:
             on_select="rerun",
             selection_mode="single-row",
             column_config={
-                "Dsct S/.":  st.column_config.NumberColumn(format="S/. %.2f"),
-                "PTR FINAL": st.column_config.NumberColumn(format="S/. %.2f"),
+                "Gerencia":  st.column_config.TextColumn(width="small"),
+                "brandpack": st.column_config.TextColumn(width="small"),
+                "listado":   st.column_config.TextColumn(width="small"),
+                "Dsct S/.":  st.column_config.NumberColumn(format="S/. %.2f", width="small"),
+                "PTR FINAL": st.column_config.NumberColumn(format="S/. %.2f", width="small"),
             }
         )
     else:
