@@ -12,6 +12,31 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# ── Acceso con contraseña ───────────────────────────────────────────────────
+APP_PASSWORD = st.secrets.get("APP_PASSWORD", "aliados2026")
+
+if not st.session_state.get("auth_ok", False):
+    st.markdown("""
+    <div style="text-align:center; padding:60px 0 10px;">
+        <div style="font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase;
+            color:#F6C842; opacity:0.8; margin-bottom:6px;">Anheuser-Busch InBev · Sur Perú</div>
+        <div style="font-size:1.8rem; font-weight:900; color:#1B3A6B;">
+            Dashboard Precios Aliados y DSD
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    _, c_pass, _ = st.columns([1, 1, 1])
+    with c_pass:
+        pwd = st.text_input("Contraseña de acceso:", type="password", key="pwd_input")
+        if st.button("Ingresar", use_container_width=True):
+            if pwd == APP_PASSWORD:
+                st.session_state["auth_ok"] = True
+                st.rerun()
+            else:
+                st.error("Contraseña incorrecta.")
+    st.stop()
+
 SAVE_DIR  = Path(__file__).parent
 FOTOS_DIR = Path(r"C:\Users\LENOVO\OneDrive - Anheuser-Busch InBev\Escritorio\Analisis\LICS Y LDACS\fotos")
 
